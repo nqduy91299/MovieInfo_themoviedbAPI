@@ -1,21 +1,19 @@
 
-
+.navbar-default{
+    border-bottom: 1px solid #cccccc;
+}
 
 .form-group {
     margin-bottom: 1rem;
 }
 
 #inputValue{
-    width: 760px;
+    width: 100%;
     padding: .375rem .75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     outline: none;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
     border-radius: .25rem;
 }
 
@@ -25,27 +23,20 @@
 }
 
 #search{
-    color: #ffffff;
-    background-color: blue;
     outline: none;
-    min-height: 38px;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
+    width: 20%;
 }
 
 section{
     display: flex;
     width: 100%;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 section img{
-    width: 300px;
+    width: 150px;
+    margin: 20px;
     transition: 250ms all;
 }
 
@@ -80,4 +71,17 @@ section img:hover{
 #content-close{
     cursor: pointer;
     color: red;
+}
+
+
+
+
+/* MOVIE.HTML */
+
+.container{
+    padding: 0 !important;
+}
+
+.colPoster img{
+    width: 100%;
 }

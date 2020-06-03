@@ -4,7 +4,7 @@ const buttonElement = document.querySelector('#search');
 const inputElement = document.querySelector('#inputValue');
 const movieSearchable = document.querySelector('#movie-searchable');
 const movieContainer = document.querySelector('#movie-container');
-
+const trailer = document.querySelector('.trailer')
 
 
 function hanldeError(error){
@@ -21,6 +21,7 @@ function movieSection(movies){
       const img = document.createElement('img');
       img.src = IMAGE_URL + movie.poster_path;
       img.setAttribute('data-movie-id', movie.id);
+      img.setAttribute('title', movie.title);
 
       section.appendChild(img);
     }
@@ -60,6 +61,10 @@ function renderSearchMovies(data){
   movieSearchable.innerHTML = '';
   const movies = data.results;
   const movieBlock = createMovieContainer(movies);
+  const header = document.createElement('h2');
+  header.innerHTML = 'Top search: '
+
+  movieSearchable.appendChild(header);
   movieSearchable.appendChild(movieBlock);
 }
 
@@ -86,33 +91,33 @@ buttonElement.onclick = function(event) {
 
 
 
-function createIframe(video){
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://www.youtube.com/embed/${video.key}`;
-  iframe.width = 360;
-  iframe.height = 315;
-  iframe.allowFullscreen = true;
+// function createIframe(video){
+//   const iframe = document.createElement('iframe');
+//   iframe.src = `https://www.youtube.com/embed/${video.key}`;
+//   iframe.width = 360;
+//   iframe.height = 315;
+//   iframe.allowFullscreen = true;
 
-  return iframe
-}
+//   return iframe;
+// }
 
 
-function createVideosTemplate(data, content){
+// function createVideosTemplate(data, content){
 
-  content.innerHTML = '<p id="content-close">X</p>'; 
-  console.log('Movies: ', data);
-  const videos = data.results;
-  const length = videos.length > 4 ? 4 : videos.length;
-  const iframeContainer = document.createElement('div');
+//   content.innerHTML = '<p id="content-close">X</p>'; 
+//   console.log('Movies: ', data);
+//   const videos = data.results;
+//   const length = videos.length > 4 ? 4 : videos.length;
+//   const iframeContainer = document.createElement('div');
 
-  for(let i = 0; i < length; i++){
-    const video = videos[i];
-    const iframe = createIframe(video);
+//   for(let i = 0; i < length; i++){
+//     const video = videos[i];
+//     const iframe = createIframe(video);
    
-    iframeContainer.appendChild(iframe);
-    content.appendChild(iframeContainer); 
-  }
-}
+//     iframeContainer.appendChild(iframe);
+//     content.appendChild(iframeContainer); 
+//   }
+// }
 
 document.onclick = function(event){
   const target = event.target;
@@ -120,26 +125,17 @@ document.onclick = function(event){
     console.log('Event: ', event);
     const movieId = target.dataset.movieId;
     console.log('movieId: ', movieId);
-    const section = event.target.parentElement;
-    const content = section.nextElementSibling;
-    content.classList.add('content-display')
 
-    const path = `/movie/${movieId}/videos`;
-    const url = generateUrl(path);
-    // fetch movie videos
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => createVideosTemplate(data, content))
-      .catch((error) => {
-      console.log("Error: ", error);
-    });
-  }
-
-  if(target.id === 'content-close'){
-    const content = target.parentElement;
-    content.classList.remove('content-display');
+    movieSelected(movieId);
   }
 }
+
+function movieSelected(id){
+  sessionStorage.setItem('movieId', id);
+  window.location = 'movie.html';
+  return false;
+}
+
 
 getUpcomingMovie();
 getTopratedMovie();

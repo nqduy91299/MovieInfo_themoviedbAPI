@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Infomation</title>
 
-    <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Movies Info</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
-        <h1>Welcome to my app</h1>
+        <h1 class="text-center">Welcome to my app</h1>
         <img src="" alt="">
         <form>
             <div class="form-group">
-                <input type="text" id="inputValue">
+                <input type="text" id="inputValue" placeholder="Search movie....">
             </div>
 
-            <button type="submit" id="search">Search a movie</button>
+            <button class="btn btn-success" type="submit" id="search">Search a movie</button>
         </form>
     </div>
     <div id="movie-searchable">
