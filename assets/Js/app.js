@@ -91,33 +91,33 @@ buttonElement.onclick = function(event) {
 
 
 
-// function createIframe(video){
-//   const iframe = document.createElement('iframe');
-//   iframe.src = `https://www.youtube.com/embed/${video.key}`;
-//   iframe.width = 360;
-//   iframe.height = 315;
-//   iframe.allowFullscreen = true;
+function createIframe(video){
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${video.key}`;
+  iframe.width = 360;
+  iframe.height = 315;
+  iframe.allowFullscreen = true;
 
-//   return iframe;
-// }
+  return iframe;
+}
 
 
-// function createVideosTemplate(data, content){
+function createVideosTemplate(data, content){
 
-//   content.innerHTML = '<p id="content-close">X</p>'; 
-//   console.log('Movies: ', data);
-//   const videos = data.results;
-//   const length = videos.length > 4 ? 4 : videos.length;
-//   const iframeContainer = document.createElement('div');
+  content.innerHTML = '<h2>Trailer</h2>'; 
+  console.log('Movies: ', data);
+  const videos = data.results;
+  const length = videos.length > 4 ? 4 : videos.length;
+  const iframeContainer = document.createElement('div');
 
-//   for(let i = 0; i < length; i++){
-//     const video = videos[i];
-//     const iframe = createIframe(video);
+  for(let i = 0; i < length; i++){
+    const video = videos[i];
+    const iframe = createIframe(video);
    
-//     iframeContainer.appendChild(iframe);
-//     content.appendChild(iframeContainer); 
-//   }
-// }
+    iframeContainer.appendChild(iframe);
+    content.appendChild(iframeContainer); 
+  }
+}
 
 document.onclick = function(event){
   const target = event.target;

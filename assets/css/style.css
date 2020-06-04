@@ -1,4 +1,6 @@
-
+body{
+    font-size: 20px;
+}
 .navbar-default{
     border-bottom: 1px solid #cccccc;
 }
@@ -84,4 +86,11 @@ section img:hover{
 
 .colPoster img{
     width: 100%;
+}
+
+
+/* TRAILER */
+
+.colTrailer{
+    margin-top: 20px;
 }
