@@ -36,7 +36,8 @@ function createMovieContainer(movies, title =''){
   // set movie into attribute class
   movieElement.setAttribute('class', 'movie');
 
-  const header = document.createElement('h2');
+  const header = document.createElement('h4');
+  header.classList.add('title-color')
   header.innerHTML = title;
 
   const content = document.createElement('div');
@@ -57,12 +58,14 @@ function createMovieContainer(movies, title =''){
 
 
 function renderSearchMovies(data){
+  console.log('pass', data)
   // get movies[]
   movieSearchable.innerHTML = '';
   const movies = data.results;
   const movieBlock = createMovieContainer(movies);
-  const header = document.createElement('h2');
-  header.innerHTML = 'Top search: '
+  const header = document.createElement('h4');
+  header.classList.add('title-color')
+  header.innerHTML = 'Top search: '  + this.value
 
   movieSearchable.appendChild(header);
   movieSearchable.appendChild(movieBlock);
@@ -82,10 +85,11 @@ function renderMovies(data){
 buttonElement.onclick = function(event) {
   event.preventDefault();
   const value = inputElement.value;
-  
-  searchMovie(value);
+  if(value.trim() !== ''){
+    searchMovie(value);
+    inputElement.value = '';
+  }
 
-  inputElement.value = '';
   console.log('value: ' + value);
 }
 
@@ -137,5 +141,5 @@ function movieSelected(id){
 }
 
 
-getUpcomingMovie();
-getTopratedMovie();
+// getUpcomingMovie();
+// getTopratedMovie();
