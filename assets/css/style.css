@@ -75,7 +75,7 @@ section img:hover {
 }
 
 .colPoster img {
-  width: 100%;
+  max-height: 80vh;
 }
 
 /* TRAILER */

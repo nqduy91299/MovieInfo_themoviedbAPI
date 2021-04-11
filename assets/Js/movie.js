@@ -10,7 +10,6 @@ function getGenres(data){
     for (j in genres) {
         createGenre += genres[j].name + ", ";
       }
-    console.log('Create Genres: ', createGenre);
     return createGenre;
 }
 
@@ -48,7 +47,6 @@ function getLanguage(movie){
 
 function getMovieDetail(){
     const movieDetailId = sessionStorage.getItem('movieId');
-    console.log('MovieId: ', movieDetailId);
     const path = `/movie/${movieDetailId}`;
     const url = generateUrl(path);
   
@@ -57,11 +55,7 @@ function getMovieDetail(){
      .then((res) => res.json())
      .then((data) =>{
         const movieDetail = data;
-        console.log('movieDetail: ', movieDetail);
-        console.log('Genres length: ', data.genres.length);
         
-        // console.log('genres: ', getGenres(movieDetail.genres));
-        console.log('Hello: ', IMAGE_URL + movieDetail.poster_path);
 
         const imgDetail = document.createElement('img');
         imgDetail.src = IMAGE_URL + movieDetail.poster_path;
@@ -70,7 +64,7 @@ function getMovieDetail(){
 
 
         const detail = `
-            <h2>${movieDetail.title}</h2>
+            <h2 class="text-uppercase">${movieDetail.title}</h2>
             <ul>
                 <li>Release date: ${movieDetail.release_date}</li>
                 <li>Overview: ${movieDetail.overview}</li>
@@ -80,19 +74,17 @@ function getMovieDetail(){
                 <li>Language: ${getLanguage(movieDetail.spoken_languages)}</li>
                 <li>Vote Average: ${movieDetail.vote_average}% (Vote count: ${movieDetail.vote_count})</li>
             </ul>
-            <a class="btn btn-success" type="button" href="index.html">Back to home</a>
         `;
 
         colDetail.innerHTML = detail;
      })
      .catch((error) => {
-     console.log("Error: ", error);
+     console.error("Error: ", error);
    });
 }
 
 function getTrailer(){
     const movieDetailId = sessionStorage.getItem('movieId');
-    console.log('MovieId: ', movieDetailId);
     const path = `/movie/${movieDetailId}/videos`;
     const url = generateUrl(path);
   
@@ -104,7 +96,7 @@ function getTrailer(){
         createVideosTemplate(data, colTrailer);
      })
      .catch((error) => {
-     console.log("Error: ", error);
+     console.error("Error: ", error);
    });
 }
 

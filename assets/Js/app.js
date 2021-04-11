@@ -8,7 +8,7 @@ const trailer = document.querySelector('.trailer')
 
 
 function hanldeError(error){
-  console.log('Error: ', error);
+  console.error('Error: ', error);
 }
 
 
@@ -58,7 +58,6 @@ function createMovieContainer(movies, title =''){
 
 
 function renderSearchMovies(data){
-  console.log('pass', data)
   // get movies[]
   movieSearchable.innerHTML = '';
   const movies = data.results;
@@ -77,7 +76,6 @@ function renderMovies(data){
   const movies = data.results;
   const movieBlock = createMovieContainer(movies, this.title);
   movieContainer.appendChild(movieBlock);
-  console.log('Data: ', data);
 }
 
 
@@ -90,7 +88,6 @@ buttonElement.onclick = function(event) {
     inputElement.value = '';
   }
 
-  console.log('value: ' + value);
 }
 
 
@@ -109,7 +106,6 @@ function createIframe(video){
 function createVideosTemplate(data, content){
 
   content.innerHTML = '<h2>Trailer</h2>'; 
-  console.log('Movies: ', data);
   const videos = data.results;
   const length = videos.length > 4 ? 4 : videos.length;
   const iframeContainer = document.createElement('div');
@@ -126,9 +122,7 @@ function createVideosTemplate(data, content){
 document.onclick = function(event){
   const target = event.target;
   if(target.tagName.toLowerCase() === 'img'){
-    console.log('Event: ', event);
     const movieId = target.dataset.movieId;
-    console.log('movieId: ', movieId);
 
     movieSelected(movieId);
   }
@@ -141,5 +135,5 @@ function movieSelected(id){
 }
 
 
-// getUpcomingMovie();
-// getTopratedMovie();
+getUpcomingMovie();
+getTopratedMovie();
