@@ -2,11 +2,11 @@
 const API_KEY = 'a07414464c39bdaf3d1eaf35a677b923';
 const IMAGE_URL ='https://image.tmdb.org/t/p/w500';
 
-const url ='https://api.themoviedb.org/3/search/movie?api_key=a07414464c39bdaf3d1eaf35a677b923';
+const url =`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
 
 
 function generateUrl(path){
-    const url = `https://api.themoviedb.org/3${path}?api_key=a07414464c39bdaf3d1eaf35a677b923`;
+    const url = `https://api.themoviedb.org/3${path}?api_key=${API_KEY}`;
     return url;
 }
   
